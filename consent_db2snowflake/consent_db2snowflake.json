@@ -28,7 +28,7 @@
   },
   "maxRetries" : 0,
   "allocatedCapacity" : 2,
-  "timeout" : 480,
+  "timeout" : 20,
   "maxCapacity" : 2.0,
   "glueVersion" : "5.0",
   "numberOfWorkers" : 2,

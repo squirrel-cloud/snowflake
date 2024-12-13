@@ -1,0 +1,43 @@
+{
+  "name" : "stellantis_db2snowflake",
+  "jobMode" : "SCRIPT",
+  "description" : "",
+  "role" : "arn:aws:iam::269547223311:role/SH_content_glue",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 1
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://aws-glue-assets-269547223311-us-west-2/scripts/se.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--enable-metrics" : "true",
+    "--enable-spark-ui" : "true",
+    "--spark-event-logs-path" : "s3://aws-glue-assets-269547223311-us-west-2/sparkHistoryLogs/",
+    "--enable-job-insights" : "true",
+    "--enable-observability-metrics" : "true",
+    "--enable-glue-datacatalog" : "true",
+    "--enable-continuous-cloudwatch-log" : "true",
+    "--job-bookmark-option" : "job-bookmark-disable",
+    "--job-language" : "python",
+    "--TempDir" : "s3://aws-glue-assets-269547223311-us-west-2/temporary/"
+  },
+  "connections" : {
+    "connections" : [ "sf-data-lake-ubi", "Snowflake connection - Corp", "sf-data-lake-ubi-jdbc" ]
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 6,
+  "timeout" : 480,
+  "maxCapacity" : 6.0,
+  "glueVersion" : "5.0",
+  "numberOfWorkers" : 6,
+  "workerType" : "G.1X",
+  "executionClass" : "STANDARD",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "snowflake",
+    "branch" : "main",
+    "folder" : "stellantis_db2snowflake"
+  }
+}
